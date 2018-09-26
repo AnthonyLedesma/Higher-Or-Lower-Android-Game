@@ -12,9 +12,7 @@ import java.util.Random;
 import static java.lang.Integer.parseInt;
 
 public class MainActivity extends AppCompatActivity {
-    static Random rando = new Random();
-    static int sysNumber = rando.nextInt(20) + 1;
-
+    int sysNumber;
 
     public void compareValues(View view) {
         EditText userInput = (EditText) findViewById(R.id.GuessNumberText);
@@ -35,5 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Random rando = new Random();
+        sysNumber = rando.nextInt(20) + 1;
+
     }
 }
