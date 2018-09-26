@@ -14,6 +14,10 @@ import static java.lang.Integer.parseInt;
 public class MainActivity extends AppCompatActivity {
     int sysNumber;
 
+    public void generateRandomNumber() {
+        Random rando = new Random();
+        sysNumber = rando.nextInt(20) + 1;
+    }
     public void compareValues(View view) {
         EditText userInput = (EditText) findViewById(R.id.GuessNumberText);
         int userNumber = parseInt(userInput.getText().toString());
@@ -23,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (sysNumber < userNumber) {
             Toast.makeText(this, "Lower!", Toast.LENGTH_SHORT).show();
         } else {
-            String comparison = String.format("You guessed correct! %d is the system number and your guess was %d", sysNumber, userNumber);
+            String comparison = String.format("You guessed correct! %d is the system number and your guess was %d.", sysNumber, userNumber);
             Toast.makeText(this, comparison, Toast.LENGTH_SHORT).show();
+            generateRandomNumber();
         }
 
     }
@@ -33,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Random rando = new Random();
-        sysNumber = rando.nextInt(20) + 1;
-
+        generateRandomNumber();
     }
 }
